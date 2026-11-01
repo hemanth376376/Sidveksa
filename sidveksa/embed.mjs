@@ -1,0 +1,12 @@
+import fs from 'fs';
+const logo = fs.readFileSync('C:/Users/fanti/OneDrive/Desktop/sidveksa/logo.b64','utf8').trim();
+const bg = fs.readFileSync('C:/Users/fanti/OneDrive/Desktop/sidveksa/bg.b64','utf8').trim();
+let html = fs.readFileSync('C:/Users/fanti/OneDrive/Desktop/sidveksa/sidveksa.html','utf8');
+const bgData = "url('data:image/jpeg;base64," + bg + "')";
+html = html.replace("url('images/background imag for home screen.jpg')", bgData);
+const logoTag = '<img src="images/logo.jpg" alt="Sidveksa Logo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 14px;">';
+const logoTagData = '<img src="data:image/jpeg;base64,' + logo + '" alt="Sidveksa Logo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 14px;">';
+html = html.replace(logoTag, logoTagData);
+html = html.replace(logoTag, logoTagData);
+fs.writeFileSync('C:/Users/fanti/OneDrive/Desktop/sidveksa/sidveksa.html', html);
+console.log('done');
