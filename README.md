@@ -1,2 +1,0 @@
-# Sidveksa
-Web Development
