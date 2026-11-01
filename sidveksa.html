@@ -1,0 +1,1322 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sidveksa | Website Building Company</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.2/css/all.min.css">
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+        "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+      }
+    }
+  </script>
+  <style>
+    :root {
+      /* Editable background images - replace the URLs/paths as needed */
+      --bg-home: url('images/background imag for home screen.jpg');
+      --bg-work: url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=2072&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+      --bg-tools: url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+      --bg-contact: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+      --accent: #4f9bff;
+      --accent-2: #22d3ee;
+      --text-primary: #f8fafc;
+      --text-secondary: #cbd5f5;
+      --glass: rgba(15, 23, 42, 0.55);
+      --glass-border: rgba(148, 163, 184, 0.45);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      scroll-behavior: smooth;
+      scroll-padding-top: 120px;
+    }
+
+    body {
+      background: #020617;
+      color: var(--text-primary);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 48px;
+      z-index: 1000;
+      backdrop-filter: blur(18px) saturate(120%);
+      background: linear-gradient(90deg, rgba(2, 6, 23, 0.9) 0%, rgba(15, 23, 42, 0.6) 100%);
+      border-bottom: 1px solid rgba(148, 163, 184, 0.25);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+      color: var(--text-primary);
+    }
+
+    .logo-mark {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      position: relative;
+      background: radial-gradient(circle at 30% 30%, rgba(34, 211, 238, 0.9), rgba(79, 155, 255, 0.4));
+      box-shadow: 0 30px 60px -40px rgba(34, 211, 238, 0.9);
+      overflow: hidden;
+    }
+
+    .logo-mark::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 70% 20%, rgba(248, 250, 252, 0.25), transparent 55%);
+    }
+
+    .logo-mark span {
+      position: relative;
+      font-weight: 800;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      font-size: 10px;
+    }
+
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1;
+    }
+
+    .logo-text .name {
+      font-weight: 700;
+      letter-spacing: 0.6em;
+      text-transform: uppercase;
+      font-size: 12px;
+    }
+
+    .logo-text .tagline {
+      margin-top: 6px;
+      font-size: 10px;
+      letter-spacing: 0.8em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .nav-btn {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 26px;
+      border-radius: 999px;
+      text-decoration: none;
+      color: var(--text-primary);
+      text-transform: uppercase;
+      letter-spacing: 0.4em;
+      font-size: 11px;
+      border: 1px solid transparent;
+      background: radial-gradient(circle, rgba(79, 155, 255, 0.25) 0%, transparent 70%);
+      transition: all 0.4s ease;
+    }
+
+    .nav-btn::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+    }
+
+    .nav-btn:hover {
+      box-shadow: 0 40px 80px -60px rgba(34, 211, 238, 0.9);
+      transform: translateY(-6px);
+    }
+
+    .nav-btn .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent-2);
+      box-shadow: 0 0 0 8px rgba(34, 211, 238, 0.12);
+    }
+
+    main {
+      display: flex;
+      flex-direction: column;
+    }
+
+    section {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 160px 48px 120px;
+      overflow: hidden;
+    }
+
+    .bg-layer {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      filter: saturate(110%);
+    }
+
+    .bg-overlay {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top, rgba(15, 23, 42, 0.25), rgba(2, 6, 23, 0.95));
+    }
+
+    .bg-grid {
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(rgba(148, 163, 184, 0.12) 1px, transparent 1px);
+      background-size: 80px 80px;
+      opacity: 0.4;
+      mix-blend-mode: screen;
+    }
+
+    .section-content {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 32px;
+      width: min(1400px, 100%);
+      margin: 0 auto;
+      align-items: center;
+    }
+
+    .hero-text {
+      grid-column: 1 / 8;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.6em;
+      font-size: 11px;
+      color: var(--text-secondary);
+    }
+
+    .eyebrow::before {
+      content: '';
+      width: 42px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--accent-2));
+    }
+
+    .hero-title {
+      font-size: clamp(48px, 8vw, 120px);
+      line-height: 0.95;
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
+    }
+
+    .hero-title .outline {
+      -webkit-text-stroke: 1px rgba(248, 250, 252, 0.8);
+      color: transparent;
+    }
+
+    .hero-subtitle {
+      max-width: 680px;
+      font-size: clamp(18px, 2vw, 24px);
+      color: var(--text-secondary);
+    }
+
+    .hero-body {
+      max-width: 720px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      color: var(--text-secondary);
+    }
+
+    .floating-stack {
+      grid-column: 9 / -1;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .floating-card {
+      position: relative;
+      padding: 26px 30px;
+      border-radius: 20px;
+      backdrop-filter: blur(22px) saturate(130%);
+      background: linear-gradient(140deg, rgba(79, 155, 255, 0.25) 0%, rgba(15, 23, 42, 0.7) 100%);
+      border: 1px solid var(--glass-border);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      box-shadow: 0 80px 140px -100px rgba(34, 211, 238, 0.8);
+      animation: float 9s ease-in-out infinite;
+    }
+
+    .floating-card:nth-child(2) {
+      animation-delay: -2s;
+      margin-left: 12%;
+    }
+
+    .floating-card:nth-child(3) {
+      animation-delay: -4s;
+      margin-left: 24%;
+    }
+
+    .floating-card .label {
+      text-transform: uppercase;
+      letter-spacing: 0.5em;
+      font-size: 10px;
+      color: var(--text-secondary);
+    }
+
+    .floating-card .value {
+      font-size: clamp(20px, 3vw, 34px);
+      font-weight: 600;
+    }
+
+    .floating-card .desc {
+      color: var(--text-secondary);
+    }
+
+    @keyframes float {
+      0%,
+      100% {
+        transform: translateY(0px);
+      }
+      50% {
+        transform: translateY(-16px);
+      }
+    }
+
+    .section-header {
+      grid-column: 1 / -1;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 40px;
+    }
+
+    .section-title {
+      font-size: clamp(40px, 7vw, 96px);
+      text-transform: uppercase;
+      letter-spacing: -0.01em;
+    }
+
+    .section-lead {
+      max-width: 880px;
+      color: var(--text-secondary);
+      font-size: clamp(18px, 2vw, 22px);
+    }
+
+    .about-panel {
+      grid-column: 1 / 7;
+      position: relative;
+      border-radius: 28px;
+      padding: clamp(32px, 6vw, 72px);
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+      backdrop-filter: blur(24px) saturate(130%);
+      background: linear-gradient(160deg, rgba(15, 23, 42, 0.85) 0%, rgba(15, 23, 42, 0.65) 100%);
+      border: 1px solid var(--glass-border);
+      box-shadow: 0 120px 200px -140px rgba(79, 155, 255, 0.9);
+    }
+
+    .about-panel::before {
+      content: '';
+      position: absolute;
+      inset: 1px;
+      border-radius: inherit;
+      background: radial-gradient(circle at top right, rgba(34, 211, 238, 0.18), transparent 55%);
+      pointer-events: none;
+    }
+
+    .about-panel > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .about-panel p {
+      color: var(--text-secondary);
+    }
+
+    .world-stage {
+      grid-column: 8 / -1;
+      position: relative;
+      height: clamp(320px, 52vw, 560px);
+      border-radius: 28px;
+      overflow: hidden;
+      border: 1px solid var(--glass-border);
+      box-shadow: 0 140px 220px -160px rgba(34, 211, 238, 0.9);
+    }
+
+    #world-canvas {
+      width: 100%;
+      height: 100%;
+    }
+
+    .world-overlay {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: radial-gradient(circle, transparent 40%, rgba(2, 6, 23, 0.9) 100%);
+    }
+
+    .projects-grid {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 24px;
+    }
+
+    .project-card {
+      grid-column: span 6;
+      position: relative;
+      border-radius: 26px;
+      overflow: hidden;
+      min-height: 420px;
+      display: flex;
+      align-items: flex-end;
+      border: 1px solid var(--glass-border);
+      box-shadow: 0 120px 200px -150px rgba(79, 155, 255, 0.8);
+    }
+
+    .project-card .bg-layer {
+      filter: grayscale(10%);
+    }
+
+    .project-card:hover .bg-layer {
+      transform: scale(1.05);
+      transition: transform 12s ease;
+    }
+
+    .project-content {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      padding: 38px;
+      width: 100%;
+      background: linear-gradient(180deg, transparent 0%, rgba(2, 6, 23, 0.95) 100%);
+    }
+
+    .project-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .project-label {
+      text-transform: uppercase;
+      letter-spacing: 0.6em;
+      font-size: 10px;
+      color: var(--text-secondary);
+    }
+
+    .project-title {
+      font-size: clamp(28px, 4vw, 48px);
+      text-transform: uppercase;
+    }
+
+    .project-desc {
+      max-width: 520px;
+      color: var(--text-secondary);
+    }
+
+    .tools-grid {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 18px;
+    }
+
+    .tool-card {
+      position: relative;
+      border-radius: 18px;
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      text-align: center;
+      backdrop-filter: blur(20px) saturate(130%);
+      background: linear-gradient(160deg, rgba(15, 23, 42, 0.9) 0%, rgba(15, 23, 42, 0.7) 100%);
+      border: 1px solid var(--glass-border);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .tool-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 60px 120px -80px rgba(34, 211, 238, 0.7);
+    }
+
+    .tool-thumb {
+      width: 72px;
+      height: 72px;
+      border-radius: 18px;
+      display: grid;
+      place-items: center;
+      background: radial-gradient(circle, rgba(34, 211, 238, 0.25), transparent 70%);
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      overflow: hidden;
+    }
+
+    .tool-thumb img {
+      width: 46px;
+      height: 46px;
+      object-fit: contain;
+    }
+
+    .tool-name {
+      text-transform: uppercase;
+      letter-spacing: 0.4em;
+      font-size: 10px;
+    }
+
+    .contact-grid {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 28px;
+      align-items: stretch;
+    }
+
+    .contact-panel {
+      grid-column: 1 / 7;
+      position: relative;
+      border-radius: 28px;
+      padding: clamp(32px, 6vw, 72px);
+      display: flex;
+      flex-direction: column;
+      gap: 26px;
+      backdrop-filter: blur(24px) saturate(130%);
+      background: linear-gradient(160deg, rgba(15, 23, 42, 0.9) 0%, rgba(15, 23, 42, 0.7) 100%);
+      border: 1px solid var(--glass-border);
+      overflow: hidden;
+    }
+
+    .contact-panel::before,
+    .contact-panel::after {
+      content: '';
+      position: absolute;
+      width: 320px;
+      height: 320px;
+      border-radius: 50%;
+      filter: blur(120px);
+    }
+
+    .contact-panel::before {
+      top: -160px;
+      right: -120px;
+      background: rgba(79, 155, 255, 0.4);
+    }
+
+    .contact-panel::after {
+      bottom: -200px;
+      left: -140px;
+      background: rgba(34, 211, 238, 0.3);
+    }
+
+    .contact-panel > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .contact-list {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 18px;
+    }
+
+    .contact-icon {
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      background: radial-gradient(circle, rgba(34, 211, 238, 0.22), transparent 70%);
+    }
+
+    .contact-text {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .contact-label {
+      text-transform: uppercase;
+      letter-spacing: 0.5em;
+      font-size: 10px;
+      color: var(--text-secondary);
+    }
+
+    .contact-value {
+      font-size: clamp(18px, 2vw, 26px);
+    }
+
+    .contact-lines {
+      grid-column: 8 / -1;
+      position: relative;
+      border-radius: 28px;
+      overflow: hidden;
+      border: 1px solid var(--glass-border);
+      min-height: 420px;
+    }
+
+    .contact-lines canvas {
+      width: 100%;
+      height: 100%;
+    }
+
+    .contact-lines-overlay {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: radial-gradient(circle, transparent 30%, rgba(2, 6, 23, 0.95) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 24px;
+    }
+
+    .contact-lines-overlay span {
+      text-transform: uppercase;
+      letter-spacing: 1em;
+      font-size: 10px;
+      color: var(--text-secondary);
+    }
+
+    footer {
+      position: relative;
+      padding: 40px 48px 60px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      text-align: center;
+      border-top: 1px solid rgba(148, 163, 184, 0.25);
+      background: radial-gradient(circle at top, rgba(79, 155, 255, 0.12), transparent 70%);
+    }
+
+    footer .logo {
+      justify-content: center;
+    }
+
+    .footer-text {
+      color: var(--text-secondary);
+      font-size: 14px;
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      border: 0;
+    }
+
+    @media (max-width: 1200px) {
+      header {
+        padding: 14px 24px;
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      nav {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      section {
+        padding: 200px 24px 100px;
+      }
+
+      .section-content {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-text,
+      .floating-stack,
+      .about-panel,
+      .world-stage,
+      .projects-grid,
+      .tools-grid,
+      .contact-grid {
+        grid-column: 1 / -1;
+      }
+
+      .floating-stack {
+        flex-direction: row;
+        flex-wrap: wrap;
+      }
+
+      .floating-card {
+        flex: 1 1 280px;
+        margin-left: 0 !important;
+      }
+
+      .project-card {
+        grid-column: 1 / -1;
+      }
+
+      .contact-panel,
+      .contact-lines {
+        grid-column: 1 / -1;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <a class="logo" href="#home">
+      <div class="logo-mark">
+        <img src="images/logo.jpg" alt="Sidveksa Logo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 14px;">
+      </div>
+      <div class="logo-text">
+        <span class="name">Sidveksa</span>
+        <span class="tagline">Webcraft Studio</span>
+      </div>
+    </a>
+    <nav>
+      <a class="nav-btn" href="#work">
+        <span class="dot"></span>
+        <span>Work</span>
+      </a>
+      <a class="nav-btn" href="#tools">
+        <span class="dot"></span>
+        <span>Tools</span>
+      </a>
+      <a class="nav-btn" href="#contact">
+        <span class="dot"></span>
+        <span>Contact</span>
+      </a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="home">
+      <div class="bg-layer" style="background-image: var(--bg-home);"></div>
+      <div class="bg-overlay"></div>
+      <div class="bg-grid"></div>
+      <div class="section-content">
+        <div class="hero-text">
+          <div class="eyebrow">
+            <span>Digital Commerce Architects</span>
+          </div>
+          <h1 class="hero-title">
+            Sidveksa
+            <span class="outline">Builds</span>
+            <br>
+            Commerce That Converts
+          </h1>
+          <p class="hero-subtitle">
+            We are a website building Team that crafts high-performing e-commerce websites for businesses of every
+            size — from emerging brands to scaling enterprises.
+          </p>
+          <div class="hero-body">
+            <p>
+              At Sidveksa, we blend strategic UX, lightning-fast engineering, and immersive 3D experiences to turn
+              browsers into buyers. Every pixel is engineered to tell your story, build trust, and drive measurable
+              growth.
+            </p>
+            <p>
+              From seamless storefronts and intelligent automations to search-ready experiences, we build digital
+              flagships designed to scale with your ambition.
+            </p>
+          </div>
+        </div>
+        <div class="floating-stack">
+          <article class="floating-card">
+            <span class="label">End-to-end</span>
+            <span class="value">E-Commerce Engineering</span>
+            <span class="desc">Storefronts, catalogs, checkout flows and product journeys built for conversion.</span>
+          </article>
+          <article class="floating-card">
+            <span class="label">Intelligent</span>
+            <span class="value">AI &amp; API Automations</span>
+            <span class="desc">Smarter workflows that save time, cut costs and personalize at scale.</span>
+          </article>
+          <article class="floating-card">
+            <span class="label">Immersive</span>
+            <span class="value">3D-Driven Experiences</span>
+            <span class="desc">Subtle motion and interactive elements that keep your audience engaged.</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="work">
+      <div class="bg-layer" style="background-image: var(--bg-work);"></div>
+      <div class="bg-overlay"></div>
+      <div class="bg-grid"></div>
+      <div class="section-content">
+        <div class="section-header">
+          <div class="eyebrow">
+            <span>Our Work</span>
+          </div>
+          <h2 class="section-title">Selected Builds</h2>
+          <p class="section-lead">
+            A glimpse into the digital storefronts, brand experiences and commerce platforms we've engineered with
+            precision.
+          </p>
+        </div>
+        <div class="about-panel">
+          <div class="eyebrow">
+            <span>About Sidveksa</span>
+          </div>
+          <h3 style="font-size: clamp(28px, 4vw, 48px); text-transform: uppercase;">Built To Sell. Engineered To Scale.</h3>
+          <p>
+            Sidveksa is a full-service website building studio specializing in e-commerce websites for everyone.
+            We partner with founders, D2C brands, retailers and service businesses to transform ideas into
+            conversion-focused online stores.
+          </p>
+          <p>
+            Our approach combines human-centric design with robust development, performance optimization and
+            automation. The result: storefronts that look stunning, load instantly and are ready to grow from day one.
+          </p>
+          <p>
+            We believe every business deserves a world-class digital presence — and we build it with the craft,
+            speed and ambition it deserves.
+          </p>
+        </div>
+        <div class="world-stage">
+          <canvas id="world-canvas"></canvas>
+          <div class="world-overlay"></div>
+        </div>
+        <div class="projects-grid">
+          <article class="project-card">
+            <div class="bg-layer" style="background-image: linear-gradient(rgba(2,6,23,0.4), rgba(2,6,23,0.9)), url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');"></div>
+            <div class="project-content">
+              <div class="project-meta">
+                <span class="project-label">Project 1</span>
+                <span class="project-label">D2C Commerce</span>
+              </div>
+              <h4 class="project-title">Flagship Storefront</h4>
+              <p class="project-desc">
+                A modular e-commerce experience with intuitive navigation, smart product discovery and a frictionless
+                checkout engineered for higher conversion.
+              </p>
+            </div>
+          </article>
+          <article class="project-card">
+            <div class="bg-layer" style="background-image: linear-gradient(rgba(2,6,23,0.4), rgba(2,6,23,0.9)), url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');"></div>
+            <div class="project-content">
+              <div class="project-meta">
+                <span class="project-label">Project 2</span>
+                <span class="project-label">Multi-Vendor</span>
+              </div>
+              <h4 class="project-title">Marketplace Platform</h4>
+              <p class="project-desc">
+                Scalable multi-vendor architecture with vendor dashboards, order orchestration and secure
+                payments — built to handle growth from day one.
+              </p>
+            </div>
+          </article>
+          <article class="project-card">
+            <div class="bg-layer" style="background-image: linear-gradient(rgba(2,6,23,0.4), rgba(2,6,23,0.9)), url('https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');"></div>
+            <div class="project-content">
+              <div class="project-meta">
+                <span class="project-label">Project 3</span>
+                <span class="project-label">Fashion &amp; Lifestyle</span>
+              </div>
+              <h4 class="project-title">Immersive Catalog</h4>
+              <p class="project-desc">
+                Visual-first commerce with dynamic lookbooks, quick-view flows and a refined mobile experience
+                designed to inspire and convert.
+              </p>
+            </div>
+          </article>
+          <article class="project-card">
+            <div class="bg-layer" style="background-image: linear-gradient(rgba(2,6,23,0.4), rgba(2,6,23,0.9)), url('https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');"></div>
+            <div class="project-content">
+              <div class="project-meta">
+                <span class="project-label">Project 4</span>
+                <span class="project-label">Automated Commerce</span>
+              </div>
+              <h4 class="project-title">AI-Powered Store</h4>
+              <p class="project-desc">
+                Smarter merchandising with AI-assisted recommendations, API automations and intelligent workflows
+                that scale your business behind the scenes.
+              </p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="tools">
+      <div class="bg-layer" style="background-image: var(--bg-tools);"></div>
+      <div class="bg-overlay"></div>
+      <div class="bg-grid"></div>
+      <div class="section-content">
+        <div class="section-header">
+          <div class="eyebrow">
+            <span>Our Toolkit</span>
+          </div>
+          <h2 class="section-title">Tools We Use</h2>
+          <p class="section-lead">
+            The stack we rely on to design, build, automate and launch fast, secure and scalable websites and
+            e-commerce experiences.
+          </p>
+        </div>
+        <div class="tools-grid">
+          <article class="tool-card">
+            <div class="tool-thumb">
+              <img src="https://cdn.simpleicons.org/openai/FFFFFF" alt="ChatGPT">
+            </div>
+            <span class="tool-name">ChatGPT</span>
+          </article>
+          <article class="tool-card">
+            <div class="tool-thumb">
+              <img src="https://cdn.simpleicons.org/anthropic/FFFFFF" alt="Claude">
+            </div>
+            <span class="tool-name">Claude</span>
+          </article>
+          <article class="tool-card">
+            <div class="tool-thumb">
+              <img src="https://cdn.simpleicons.org/react/61DAFB" alt="React JS">
+            </div>
+            <span class="tool-name">React JS</span>
+          </article>
+          <article class="tool-card">
+            <div class="tool-thumb">
+              <img src="https://cdn.simpleicons.org/nextdotjs/FFFFFF" alt="Next.js">
+            </div>
+            <span class="tool-name">Next.js</span>
+          </article>
+          <article class="tool-card">
+            <div class="tool-thumb">
+              <img src="https://cdn.simpleicons.org/vite/646CFF" alt="Vite">
+            </div>
+            <span class="tool-name">Vite</span>
+          </article>
+          <article class="tool-card">
+            <div class="tool-thumb">
+              <img src="https://cdn.simpleicons.org/tailwindcss/38BDF8" alt="Tailwind CSS">
+            </div>
+            <span class="tool-name">Tailwind CSS</span>
+          </article>
+          <article class="tool-card">
+            <div class="tool-thumb">
+              <img src="https://cdn.simpleicons.org/typescript/3178C6" alt="TypeScript">
+            </div>
+            <span class="tool-name">TypeScript</span>
+          </article>
+          <article class="tool-card">
+            <div class="tool-thumb">
+              <img src="https://cdn.simpleicons.org/javascript/F7DF1E" alt="JavaScript">
+            </div>
+            <span class="tool-name">JavaScript</span>
+          </article>
+          <article class="tool-card">
+            <div class="tool-thumb">
+              <img src="https://cdn.simpleicons.org/nodedotjs/339933" alt="Node.js">
+            </div>
+            <span class="tool-name">Node.js</span>
+          </article>
+          <article class="tool-card">
+            <div class="tool-thumb">
+              <img src="https://cdn.simpleicons.org/wordpress/21759B" alt="WordPress">
+            </div>
+            <span class="tool-name">WordPress</span>
+          </article>
+          <article class="tool-card">
+            <div class="tool-thumb">
+              <img src="https://cdn.simpleicons.org/shopify/7AB55C" alt="Shopify">
+            </div>
+            <span class="tool-name">Shopify</span>
+          </article>
+          <article class="tool-card">
+            <div class="tool-thumb">
+              <img src="https://cdn.simpleicons.org/woocommerce/96588A" alt="WooCommerce">
+            </div>
+            <span class="tool-name">WooCommerce</span>
+          </article>
+          <article class="tool-card">
+            <div class="tool-thumb">
+              <img src="https://cdn.simpleicons.org/webflow/4353FF" alt="Webflow">
+            </div>
+            <span class="tool-name">Webflow</span>
+          </article>
+          <article class="tool-card">
+            <div class="tool-thumb">
+              <img src="https://cdn.simpleicons.org/framer/0055FF" alt="Framer">
+            </div>
+            <span class="tool-name">Framer</span>
+          </article>
+          <article class="tool-card">
+            <div class="tool-thumb">
+              <img src="https://cdn.simpleicons.org/figma/F24E1E" alt="Figma">
+            </div>
+            <span class="tool-name">Figma</span>
+          </article>
+          <article class="tool-card">
+            <div class="tool-thumb">
+              <img src="https://cdn.simpleicons.org/canva/00C4CC" alt="Canva">
+            </div>
+            <span class="tool-name">Canva</span>
+          </article>
+          <article class="tool-card">
+            <div class="tool-thumb">
+              <img src="https://cdn.simpleicons.org/make/6D00CC" alt="Make">
+            </div>
+            <span class="tool-name">Make (Integromat)</span>
+          </article>
+          <article class="tool-card">
+            <div class="tool-thumb">
+              <img src="https://cdn.simpleicons.org/n8n/EA4B71" alt="n8n">
+            </div>
+            <span class="tool-name">n8n</span>
+          </article>
+          <article class="tool-card">
+            <div class="tool-thumb">
+              <img src="https://cdn.simpleicons.org/zapier/FF4A00" alt="Zapier">
+            </div>
+            <span class="tool-name">Zapier</span>
+          </article>
+          <article class="tool-card">
+            <div class="tool-thumb">
+              <img src="https://cdn.simpleicons.org/postman/FF6C37" alt="Postman">
+            </div>
+            <span class="tool-name">Postman</span>
+          </article>
+          <article class="tool-card">
+            <div class="tool-thumb">
+              <img src="https://cdn.simpleicons.org/stripe/635BFF" alt="Stripe">
+            </div>
+            <span class="tool-name">Stripe</span>
+          </article>
+          <article class="tool-card">
+            <div class="tool-thumb">
+              <img src="https://cdn.simpleicons.org/razorpay/02042B" alt="Razorpay">
+            </div>
+            <span class="tool-name">Razorpay</span>
+          </article>
+          <article class="tool-card">
+            <div class="tool-thumb">
+              <img src="https://cdn.simpleicons.org/googleanalytics/E37400" alt="Google Analytics">
+            </div>
+            <span class="tool-name">Google Analytics</span>
+          </article>
+          <article class="tool-card">
+            <div class="tool-thumb">
+              <img src="https://cdn.simpleicons.org/googletagmanager/246FDB" alt="Google Tag Manager">
+            </div>
+            <span class="tool-name">GTM</span>
+          </article>
+          <article class="tool-card">
+            <div class="tool-thumb">
+              <img src="https://cdn.simpleicons.org/semrush/FF642D" alt="SEO Tools">
+            </div>
+            <span class="tool-name">SEO &amp; CRO Tools</span>
+          </article>
+          <article class="tool-card">
+            <div class="tool-thumb">
+              <img src="https://cdn.simpleicons.org/vercel/FFFFFF" alt="Vercel">
+            </div>
+            <span class="tool-name">Vercel</span>
+          </article>
+          <article class="tool-card">
+            <div class="tool-thumb">
+              <img src="https://cdn.simpleicons.org/netlify/00C7B7" alt="Netlify">
+            </div>
+            <span class="tool-name">Netlify</span>
+          </article>
+          <article class="tool-card">
+            <div class="tool-thumb">
+              <img src="https://cdn.simpleicons.org/cloudflare/F38020" alt="Cloudflare">
+            </div>
+            <span class="tool-name">Cloudflare</span>
+          </article>
+          <article class="tool-card">
+            <div class="tool-thumb">
+              <img src="https://cdn.simpleicons.org/android/3DDC84" alt="Mobile App Builder">
+            </div>
+            <span class="tool-name">Mobile App Builder</span>
+          </article>
+          <article class="tool-card">
+            <div class="tool-thumb">
+              <img src="https://cdn.simpleicons.org/meta/0668E1" alt="Ads">
+            </div>
+            <span class="tool-name">Meta &amp; Google Ads</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="bg-layer" style="background-image: var(--bg-contact);"></div>
+      <div class="bg-overlay"></div>
+      <div class="bg-grid"></div>
+      <div class="section-content">
+        <div class="section-header">
+          <div class="eyebrow">
+            <span>Let's Build Together</span>
+          </div>
+          <h2 class="section-title">Contact</h2>
+          <p class="section-lead">
+            Ready to launch your e-commerce store or take your brand online? Reach out and let's craft something
+            extraordinary.
+          </p>
+        </div>
+        <div class="contact-grid">
+          <div class="contact-panel">
+            <div class="eyebrow">
+              <span>Get In Touch</span>
+            </div>
+            <h3 style="font-size: clamp(28px, 4vw, 48px); text-transform: uppercase;">Start Your Project</h3>
+            <p style="color: var(--text-secondary);">
+              Tell us about your vision and we'll map out a clear path to build a powerful, high-converting
+              website for your business.
+            </p>
+            <div class="contact-list">
+              <div class="contact-item">
+                <div class="contact-icon">
+                  <i class="fas fa-envelope"></i>
+                </div>
+                <div class="contact-text">
+                  <span class="contact-label">Email</span>
+                  <span class="contact-value">sidveksa@gmail.com</span>
+                </div>
+              </div>
+              <div class="contact-item">
+                <div class="contact-icon">
+                  <i class="fas fa-phone"></i>
+                </div>
+                <div class="contact-text">
+                  <span class="contact-label">Mobile</span>
+                  <span class="contact-value">7675869037 &nbsp;•&nbsp; 6303512407 &nbsp;•&nbsp; 9949264274</span>
+                </div>
+              </div>
+              <div class="contact-item">
+                <div class="contact-icon">
+                  <i class="fab fa-instagram"></i>
+                </div>
+                <div class="contact-text">
+                  <span class="contact-label">Instagram</span>
+                  <span class="contact-value">@sidveksa</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="contact-lines">
+            <canvas id="lines-canvas"></canvas>
+            <div class="contact-lines-overlay">
+              <span>Sidveksa • Webcraft Studio • E-Commerce For Everyone</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <a class="logo" href="#home">
+      <div class="logo-mark">
+        <span>SVK</span>
+      </div>
+      <div class="logo-text">
+        <span class="name">Sidveksa</span>
+        <span class="tagline">Webcraft Studio</span>
+      </div>
+    </a>
+    <p class="footer-text">© 2026 Sidveksa. All rights reserved. Crafted to build e-commerce websites for everyone.</p>
+  </footer>
+
+  <script type="module">
+    import * as THREE from 'three';
+
+    const worldCanvas = document.getElementById('world-canvas');
+    const linesCanvas = document.getElementById('lines-canvas');
+
+    function initWorld() {
+      if (!worldCanvas) return;
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(45, worldCanvas.clientWidth / worldCanvas.clientHeight, 0.1, 1000);
+      const renderer = new THREE.WebGLRenderer({ canvas: worldCanvas, antialias: true, alpha: true });
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      renderer.setSize(worldCanvas.clientWidth, worldCanvas.clientHeight);
+      renderer.setClearColor(0x000000, 0);
+
+      const group = new THREE.Group();
+      scene.add(group);
+
+      const globeGeometry = new THREE.IcosahedronGeometry(2.2, 2);
+      const globeMaterial = new THREE.MeshBasicMaterial({
+        color: 0x4f9bff,
+        wireframe: true,
+        transparent: true,
+        opacity: 0.5
+      });
+      const globe = new THREE.Mesh(globeGeometry, globeMaterial);
+      group.add(globe);
+
+      const coreGeometry = new THREE.SphereGeometry(1.6, 32, 32);
+      const coreMaterial = new THREE.MeshBasicMaterial({
+        color: 0x22d3ee,
+        transparent: true,
+        opacity: 0.16
+      });
+      const core = new THREE.Mesh(coreGeometry, coreMaterial);
+      group.add(core);
+
+      const ringGeometry = new THREE.RingGeometry(2.8, 3.0, 64);
+      const ringMaterial = new THREE.MeshBasicMaterial({
+        color: 0xf8fafc,
+        side: THREE.DoubleSide,
+        transparent: true,
+        opacity: 0.12
+      });
+      const ring = new THREE.Mesh(ringGeometry, ringMaterial);
+      ring.rotation.x = Math.PI / 2.4;
+      group.add(ring);
+
+      const ring2 = new THREE.Mesh(ringGeometry.clone(), ringMaterial.clone());
+      ring2.scale.set(0.9, 0.9, 0.9);
+      ring2.rotation.x = Math.PI / 1.8;
+      ring2.rotation.y = Math.PI / 6;
+      group.add(ring2);
+
+      camera.position.z = 6.6;
+
+      function onResize() {
+        if (!worldCanvas.parentElement) return;
+        const width = worldCanvas.parentElement.clientWidth;
+        const height = worldCanvas.parentElement.clientHeight;
+        camera.aspect = width / height;
+        camera.updateProjectionMatrix();
+        renderer.setSize(width, height);
+      }
+
+      window.addEventListener('resize', onResize);
+      onResize();
+
+      function animate() {
+        requestAnimationFrame(animate);
+        globe.rotation.y += 0.004;
+        globe.rotation.x += 0.0016;
+        core.rotation.y -= 0.0024;
+        ring.rotation.z += 0.0018;
+        ring2.rotation.z -= 0.0012;
+        group.rotation.y += 0.0008;
+        renderer.render(scene, camera);
+      }
+
+      animate();
+    }
+
+    function initLines() {
+      if (!linesCanvas) return;
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(60, linesCanvas.clientWidth / linesCanvas.clientHeight, 0.1, 100);
+      const renderer = new THREE.WebGLRenderer({ canvas: linesCanvas, antialias: true, alpha: true });
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      renderer.setSize(linesCanvas.clientWidth, linesCanvas.clientHeight);
+      renderer.setClearColor(0x000000, 0);
+
+      const points = [];
+      for (let i = 0; i < 120; i++) {
+        points.push(new THREE.Vector3((Math.random() - 0.5) * 10, (Math.random() - 0.5) * 6, (Math.random() - 0.5) * 8));
+      }
+
+      const geometry = new THREE.BufferGeometry().setFromPoints(points);
+      const material = new THREE.PointsMaterial({
+        color: 0x22d3ee,
+        size: 0.05,
+        transparent: true,
+        opacity: 0.8
+      });
+      const particles = new THREE.Points(geometry, material);
+      scene.add(particles);
+
+      const lineMaterial = new THREE.LineBasicMaterial({
+        color: 0x4f9bff,
+        transparent: true,
+        opacity: 0.25
+      });
+      const lineGeometry = new THREE.BufferGeometry();
+      const linePositions = [];
+      for (let i = 0; i < points.length; i += 2) {
+        const next = points[(i + 1) % points.length];
+        linePositions.push(points[i].x, points[i].y, points[i].z);
+        linePositions.push(next.x, next.y, next.z);
+      }
+      lineGeometry.setAttribute('position', new THREE.Float32BufferAttribute(linePositions, 3));
+      const lines = new THREE.LineSegments(lineGeometry, lineMaterial);
+      scene.add(lines);
+
+      camera.position.z = 9;
+
+      function onResize() {
+        if (!linesCanvas.parentElement) return;
+        const width = linesCanvas.parentElement.clientWidth;
+        const height = linesCanvas.parentElement.clientHeight;
+        camera.aspect = width / height;
+        camera.updateProjectionMatrix();
+        renderer.setSize(width, height);
+      }
+
+      window.addEventListener('resize', onResize);
+      onResize();
+
+      function animate() {
+        requestAnimationFrame(animate);
+        particles.rotation.y += 0.0009;
+        particles.rotation.x += 0.0006;
+        lines.rotation.y -= 0.0007;
+        lines.rotation.x += 0.0004;
+        renderer.render(scene, camera);
+      }
+
+      animate();
+    }
+
+    initWorld();
+    initLines();
+  </script>
+</body>
+
+</html>
